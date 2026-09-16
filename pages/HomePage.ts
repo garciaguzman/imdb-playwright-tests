@@ -16,12 +16,12 @@ export class HomePage {
     }
 
     async navigateToTop250(): Promise<void> {
-        const menuButton = this.page.getByRole('button', {
-            name: /menu|open navigation drawer/i,
-        });
+        const menuButton = this.page.getByLabel('Open navigation drawer');
 
         await menuButton.click();
 
-        await this.page.getByRole('link', {name: /top 250 movies/i}).click();
+        await this.page
+            .getByText('Top 250 movies', {exact: true})
+            .click();
     }
 }
